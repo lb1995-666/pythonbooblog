@@ -1,0 +1,28 @@
+{% extends "app01/blog_index.html" %}
+{% block blog_index %}{% endblock %}
+{% block leave_messages %}{% endblock %}
+{% block main %}
+<div class="main" style="width:100%;">
+    <div class="article">
+      <div class="map"><span> 当前位置：<a href='/'>首页</a> > <a href=''>注册</a></span> </div>
+      <div class="title">
+        <h1> 注册 </h1>
+      </div>
+      <div class="article_content">
+      	<div class="message">
+         <form action="/blog_register/" method="post">
+        	<dt></dt>
+            <dd><label class="blog_register">用户名：</label><input type="text" class="kuang" name="username" id="username" required></dd>
+            <dd><label class="blog_register">密码：</label><input type="password" class="kuang" name="password1" id="password" required></dd>
+             <dd><label class="blog_register">确认密码：</label><input type="password" class="kuang" name="password2" required></dd>
+             <dd><label class="blog_register">邮箱：</label><input type="text" class="kuang" name="email" required></dd>
+             <dd><label class="blog_register">手机号：</label><input type="text" class="kuang" name="phone"></dd>
+            <dd><input type="submit" class="tj" value="提交"></dd>
+             <div style="color:green">{{msg}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block right %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "app01/blog_index.html" %}
+{% block blog_index %}{% endblock %}
+{% block publish_article %}current_page_item{% endblock %}
+{% block main %}
+<div class="main" style="width:100%;">
+    <div class="article">
+      <div class="map"><span> 当前位置：<a href='/'>首页</a> > <a href='/publish_article/'>发表文章</a></span> </div>
+      <div class="title">
+        <h1> 发表文章 </h1>
+      </div>
+      <div class="article_content">
+      	<div class="message">
+         <form action="/publish_article/" method="post">
+        <input type="hidden" name="action" value="post" />
+        <input type="hidden" name="diyid" value="1" />
+        <input type="hidden" name="do" value="2" />
+        	<dt></dt>
+            <dd>标题：<input type="text" class="kuang" name="title" id="u_name"></dd>
+<!--            <dd>类型：<input type="text" class="kuang" name="type" id="u_email"></dd>-->
+             <dd>内容：<select id="u_email" name="type" class="kuang">
+                 {%for j in types%}
+                 <option value="{{j.0}}">{{j.1}}</option>
+                 {%endfor%}
+             </select></dd>
+            <dd>内容：<textarea name="body" id="u_context"></textarea></dd>
+
+            <dd><input type="submit" class="tj" value="提交"></dd>
+             <dd style="color:green">{{ msg }}</dd>
+             <dd style="color:red">{{ err_msg }}</dd>
+             </form>
+        </div>
+    </div>
+  </div>
+    </div>
+{% endblock %}
+{% block right %}
+{% endblock %}

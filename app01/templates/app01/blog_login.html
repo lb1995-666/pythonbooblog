@@ -1,0 +1,25 @@
+{% extends "app01/blog_index.html" %}
+{% block blog_index %}{% endblock %}
+{% block leave_messages %}{% endblock %}
+{% block main %}
+<div class="main" style="width:100%;">
+    <div class="article">
+      <div class="map"><span> 当前位置：<a href='/'>首页</a> > <a href=''>登录</a></span> </div>
+      <div class="title">
+        <h1> 登录 </h1>
+      </div>
+      <div class="article_content">
+      	<div class="message">
+         <form action="/blog_login/" method="post">
+        	<dt></dt>
+            <dd>账号：<input type="text" class="kuang" name="username" id="username" readonly onfocus="this.removeAttribute('readonly');"></dd>
+            <dd>密码：<input type="password" class="kuang" name="password" id="password"></dd>
+            <dd><input type="submit" class="tj" value="提交"></dd>
+             <div style="color:red">{{msg}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block right %}
+{% endblock %}

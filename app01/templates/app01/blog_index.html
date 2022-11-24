@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="baidu-site-verification" content="code-PGJNKGn8Xe" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="keywords" content="关键词" />
+<meta name="description" content="网站描述" />
+<title>pythonboo博客</title>
+<meta name="author" content="order by adminbuy.cn" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/static/imgs/favicon.ico" />
+<link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css" />
+<link rel="stylesheet" type="text/css"  href="/static/css/font-awesome.min.css"/>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/responsiveslides.min.js"></script>
+<script type="text/javascript" src="/static/js/yycm.js"></script>
+</head>
+<body>
+<div class="top"> <span href="#" class="totop"></span>
+  <div class="wrap page-header">
+    <h1 style="margin-top: 0px;display: flex;align-items: center;">
+    <a href="/" title="首页" style="
+    /* display: flex; */
+    /* align-items: center; */
+"><span style="
+    font-size: 36px;
+    color: black;
+">pythonboo.com</span></a>
+    <span>人生苦短，我用python</span>
+</h1>
+    <div class="contact">
+        {% if log_status %}
+        <li><img src="/media/{{img}}/" alt="" style="width:36px;border-radius:100%"/></li>
+        <li style=""><a href="/blog_user_info/">{{username}}</a></li>
+        <li><a href="/blog_logout/">注销</a></li>
+        {% else %}
+        <li><a href="/blog_login/">登陆</a></li>
+        <li><a href="/blog_register/">注册</a></li>
+        {% endif %}
+    </div>
+  </div>
+  <div class="nav">
+    <div class="wrap zwrap">
+      <div class="navbar-header">
+        <li class="navbar-toggle"> <i class="fa fa-list fa-2x"></i> </li>
+        <li style="float:right;display:inline-block">
+          <div class="toggle-search"><i class="fa fa-search fa-2x"></i></div>
+        </li>
+        <li style="float:right;">
+          <div class="search-expand">
+            <div class="search-expand-inner">
+              <form onSubmit="return checkSearchForm()" method="post" name="formsearch1" id="searchform" class="searchform themeform" action="/{% block url%}{% endblock%}" >
+                <input type="text" class="search" name="formsearch" onblur="if(this.value=='')this.value='按回车键搜索...';" onfocus="if(this.value=='按回车键搜索...')this.value='';" value="按回车键搜索..." placeholder="按回车键搜索">
+              </form>
+            </div>
+          </div>
+        </li>
+      </div>
+      <div class="navbar-collapse">
+        <ul>
+          <li class="menu-item {% block blog_index %} current_page_item {% endblock %}"><a href="/">首页</a></li>
+          <li class="menu-item {% block python_base %} {% endblock %}"><a href="/python_base">python基础</a>
+            <ul class="sub-menu">
+            </ul>
+          </li>
+            <li class="menu-item {% block django_frame %} {% endblock %}"><a href="/django_frame">django框架</a>
+            <ul class="sub-menu">
+            </ul>
+          </li>
+            <li class="menu-item {% block linux_order %} {% endblock %}"><a href="/linux_order/">linux命令</a>
+            <ul class="sub-menu">
+            </ul>
+          </li>
+            <li class="menu-item {% block publish_article %} {% endblock %}"><a href="/publish_article/">发表文章</a>
+            <ul class="sub-menu">
+            </ul>
+          </li>
+            <li class="menu-item {% block leave_messages %} {% endblock %}"><a href="/leave_messages">给我留言</a>
+            <ul class="sub-menu">
+            </ul>
+          </li>
+            <li class="menu-item {% block about %} {% endblock %}"><a href="/about/">关于博主</a>
+            <ul class="sub-menu">
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="notic">
+  </div>
+</div>
+
+<div class="wrap">
+    {% block main %}
+  <div class="main">
+    <div class="screen">
+      <div class="slide_container">
+        <ul class="rslides" id="slider">
+            <li> <a href=""><img src="/static/imgs/1-1F5302015450-L.jpg"></a> </li>
+            <li> <a href=""><img src="/static/imgs/1-1F5302015280-L.jpg"></a> </li>
+            <li> <a href=""><img src="/static/imgs/1-1F5302015060-L.jpg"></a> </li>
+            <li> <a href=""><img src="/static/imgs/1-1F5302013090-L.jpg"></a> </li>
+        </ul>
+      </div>
+    </div>
+      {%for blog in blogs%}
+<div class="block">
+      <h2><span class="category"> <a href="/blog_detail/{{blog.id}}" rel="category tag" >{{blog.get_type_display}}</a> <i class="fa fa-caret-right"></i></span><a href="/blog_detail/{{blog.id}}">{{blog.title}}</a></h2>
+      <div class="clear">
+
+      <div class="preview">{{blog.context|safe}}</div>
+      <div class="preem"> <span><i class="fa fa-clock-o"></i> {{blog.create_time}} </span><span><i class="fa fa-comment-o"></i> <a href="" class="ds-thread-count" data-thread-key="156">{{blog.count}}</a> </span><span><i class="fa fa-eye"></i> {{blog.views}} </span><span> </span><span class="more"><a href="/blog_detail/{{blog.id}}" title="这个没有略缩图，不会显示前面的图片！">阅读详情</a></span> </div>
+      </div>
+</div>
+      {%endfor%}
+
+
+    <div class='pagination'>  <a href="">点击查看更多</a>  </div>
+  </div>
+    {% endblock%}
+<div class="sider">
+    {% block right %}
+  <div class="right">
+    <div class="author" style="margin-bottom:20px">
+      <div class="topauthor"> <img alt="" src="/static/imgs/PDX.jpg" class="avatar avatar-100 photo" height="100" width="100"> <span class="intag">博客主人</span><span class="names"></span></br>
+        <span class="talk"> 男，文化程度不高性格有点犯二，已经20来岁至今未婚，闲着没事喜欢研究各种代码，资深技术宅。 </span> </div>
+      <span class="bot"></span> </div>
+
+    <div class="subblock"> <img src="/static/imgs/3cd871e89f2f6eb8a3a032653a4f8018.jpg"> </div>
+    <div class="subblock">
+      <h3>推荐文章</h3>
+      <ul>
+        <li>
+          <div class="sideshow"><a href="" target="_ablank"  title="如果没有略缩图，就不会显示前面的图片！"> <img width='80' height='60' src='/static/imgs/1-1F5301S915S8.gif' class='icon wp-post-image' alt='如果没有略缩图，就不会显示前面的图片！' title='如果没有略缩图，就不会显示前面的图片！' /> </a> <a href="/"  title="如果没有略缩图，就不会显示前面的图片！"> 如果没有略缩图，就不会显示前面的图片！ </a> <span class="datetime"> 2017/05/30 </span> </div>
+        </li>
+<li>
+          <div class="sideshow"><a href="" target="_ablank"  title="Html技巧-简单的把Table转成Div">  </a> <a href="" title="Html技巧-简单的把Table转成Div"> Html技巧-简单的把Table转成Div </a> <span class="datetime"> 2016/06/05 </span> </div>
+        </li>
+<li>
+          <div class="sideshow"><a href="" target="_ablank"  title="Html技巧-简单的把Table转成Div">  </a> <a href="" title="Html技巧-简单的把Table转成Div"> Html技巧-简单的把Table转成Div </a> <span class="datetime"> 2016/06/05 </span> </div>
+        </li>
+<li>
+          <div class="sideshow"><a href="" target="_ablank"  title="Html技巧-简单的把Table转成Div">  </a> <a href="" title="Html技巧-简单的把Table转成Div"> Html技巧-简单的把Table转成Div </a> <span class="datetime"> 2016/06/05 </span> </div>
+        </li>
+<li>
+          <div class="sideshow"><a href="" target="_ablank"  title="Html技巧-简单的把Table转成Div">  </a> <a href="" title="Html技巧-简单的把Table转成Div"> Html技巧-简单的把Table转成Div </a> <span class="datetime"> 2016/06/05 </span> </div>
+        </li>
+
+      </ul>
+    </div>
+    <div class="subblock"> <img src="/static/imgs/3cd871e89f2f6eb8a3a032653a4f8018.jpg"> </div>
+    <div class="subblock">
+      <h3>热门文章</h3>
+      <ul>
+        <li>
+          <div class="sideshow"><a href="/"  title="如果没有略缩图，就不会显示前面的图片！"> <img width='80' height='60' src='/static/imgs/1-1F5301S915S8.gif' class='icon wp-post-image' alt='如果没有略缩图，就不会显示前面的图片！' title='如果没有略缩图，就不会显示前面的图片！' /> </a> <a href=""  title="如果没有略缩图，就不会显示前面的图片！"> 如果没有略缩图，就不会显示前面的图片！ </a> <span class="datetime"> 2017/05/30 </span> </div>
+        </li>
+<li>
+          <div class="sideshow"><a href="" target="_ablank"  title="Html技巧-简单的把Table转成Div">  </a> <a href="" title="Html技巧-简单的把Table转成Div"> Html技巧-简单的把Table转成Div </a> <span class="datetime"> 2016/06/05 </span> </div>
+        </li>
+<li>
+          <div class="sideshow"><a href="" target="_ablank"  title="Html技巧-简单的把Table转成Div">  </a> <a href="" title="Html技巧-简单的把Table转成Div"> Html技巧-简单的把Table转成Div </a> <span class="datetime"> 2016/06/05 </span> </div>
+        </li>
+<li>
+          <div class="sideshow"><a href="" target="_ablank"  title="Html技巧-简单的把Table转成Div">  </a> <a href="" title="Html技巧-简单的把Table转成Div"> Html技巧-简单的把Table转成Div </a> <span class="datetime"> 2016/06/05 </span> </div>
+        </li>
+<li>
+          <div class="sideshow"><a href="" target="_ablank"  title="Html技巧-简单的把Table转成Div">  </a> <a href="" title="Html技巧-简单的把Table转成Div"> Html技巧-简单的把Table转成Div </a> <span class="datetime"> 2016/06/05 </span> </div>
+        </li>
+
+      </ul>
+    </div>
+    <div class="subblock"> <img src="/static/imgs/3cd871e89f2f6eb8a3a032653a4f8018.jpg"> </div>
+
+    <div class="subblock linkcat">
+      <h3>友情链接</h3>
+      <ul>
+
+        <li><a href='#'>织梦模板</a> </li>
+
+        <li><a href='#'>织梦源码</a> </li>
+
+        <li><a href='#'>网站模板</a> </li>
+
+        <li><a href='#'>网站源码</a> </li>
+
+        <li><a href='#'>模板王</a> </li>
+
+        <li><a href='#'>手机网站模板</a> </li>
+
+      </ul>
+    </div>
+    <ul class="widgets">
+    </ul>
+  </div>
+    {% endblock%}
+</div>
+
+</div>
+<div class="clear"></div>
+﻿<div class="footer">
+  <div class="wrap">
+    <div class="group">
+      <h3>关于本站</h3>
+      <p>网站描述</p>
+    </div>
+    <div class="group">
+      <h3>联系我</h3>
+      <p>
+      <li></li>
+      <li>QQ:874664125</li>
+      </p>
+    </div>
+    <div class="group">
+      <h3>特别鸣谢</h3>
+      <p>
+      <li><span><a href="" target="_blank"></a></span></li>
+      </p>
+    </div>
+    <div class="clear"></div>
+    <p class="ffooter">Copyright &copy;  版权所有 | <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=2022001001">豫ICP2022001001</a></p>
+  </div>
+</div>
+</body>
+</html>

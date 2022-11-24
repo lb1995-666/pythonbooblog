@@ -1,0 +1,31 @@
+{% extends "app01/blog_index.html" %}
+{% block blog_index %}{% endblock %}
+{% block leave_messages %}current_page_item{% endblock %}
+{% block main %}
+<div class="main" style="width:100%;">
+    <div class="article">
+      <div class="map"><span> 当前位置：<a href='/'>首页</a> > <a href='/liuyan/'>给我留言</a></span> </div>
+      <div class="title">
+        <h1> 给我留言 </h1>
+      </div>
+      <div class="article_content">
+      	<div class="message">
+         <form action="/leave_messages/" method="post">
+        <input type="hidden" name="action" value="post" />
+        <input type="hidden" name="diyid" value="1" />
+        <input type="hidden" name="do" value="2" />
+
+        	<dt></dt>
+            <dd>姓名：<input type="text" class="kuang" name="u_name" id="u_name"></dd>
+            <dd>邮箱：<input type="text" class="kuang" name="u_email" id="u_email"></dd>
+            <dd>内容：<textarea name="u_context" id="u_context"></textarea></dd>
+            <dd><input type="submit" class="tj" value="提交"></dd>
+             <dd style="color:green">{{ msg }}</dd>
+             <dd style="color:red">{{ err_msg }}</dd>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block right %}
+{% endblock %}

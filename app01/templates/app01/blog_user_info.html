@@ -1,0 +1,36 @@
+{% extends "app01/blog_index.html" %}
+{% block blog_index %}{% endblock %}
+
+{% block main %}
+<div class="main" style="width:100%;">
+    <div class="article">
+      <div class="map"><span> 当前位置：<a href='/'>首页</a> > <a href=''>个人信息</a></span> </div>
+      <div class="title">
+        <h1> 个人信息 </h1>
+      </div>
+      <div class="article_content">
+      	<div class="message">
+            <form action="/blog_user_info/" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="post" />
+                <input type="hidden" name="diyid" value="1" />
+                <input type="hidden" name="do" value="2" />
+                <dt></dt>
+                <dd style="display:flex;align-items:center;">头像：
+                    <img src="/media/{{img}}" style="width:100px;border-radius:100%;">
+                </dd>
+                <dd>更换：<input type="file" name="file" accept="image/png,image/jpeg"></dd>
+                <dd>用户：<input type="text" class="kuang" name="username" id="u1" value="{{username}}" disabled="disabled"></dd>
+                <dd>昵称：<input type="text" class="kuang" name="nickname" id="u2" value="{{nickname}}"></dd>
+                <dd>邮箱：<input type="text" class="kuang" name="email" id="u4" value="{{email}}"></dd>
+                <dd>手机：<input type="text" class="kuang" name="phone" id="u5" value="{{phone}}"></dd>
+                <dd><input type="submit" class="tj" value="提交" style="margin-right:20px"><a href="/password_change/">修改密码</a></dd>
+                <dd style="color:green">{{ msg }}</dd>
+                <dd style="color:red">{{ err_msg }}</dd>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block right %}
+{% endblock %}

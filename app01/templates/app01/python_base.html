@@ -1,0 +1,26 @@
+{% extends "app01/blog_index.html" %}
+{% block blog_index %}{% endblock %}
+{% block url%}python_base/{% endblock %}
+{% block python_base %}current_page_item{% endblock %}
+{% block main %}
+  <div class="main">
+    <div class="map1"> <span> 当前位置：<a href='/'>首页</a> > <a href='#'>python基础</a> >
+      <h1>文章分类：python基础</h1>
+      </span> </div>
+      {%for blog in blogs%}
+    <div class="block">
+      <h2><span class="category"> <a href="/blog_detail/{{blog.id}}" rel="category tag" >{{blog.get_type_display}}</a> <i class="fa fa-caret-right"></i></span><a href="/blog_detail/{{blog.id}}" >{{blog.title}}</a></h2>
+      <div class="clear"></div>
+
+      <div class="preview"> {{blog.context|safe}} </div>
+      <div class="preem"> <span><i class="fa fa-clock-o"></i> {{blog.create_time}} </span><span><i class="fa fa-comment-o"></i> <a href="/html/6.html" class="ds-thread-count" data-thread-key="156">{{blog.count}}</a> </span><span><i class="fa fa-eye"></i> {{blog.views}} </span><span> </span><span class="more"><a href="/blog_detail/{{blog.id}}" title="网站运行天数代码">阅读详情</a></span> </div>
+    </div>
+      {%endfor%}
+    <div class="pagess">
+    <ul>
+     <li><span class="pageinfo">共 <strong>1</strong>页<strong>1</strong>条记录</span></li>
+
+    </ul>
+    </div>
+  </div>
+{% endblock %}

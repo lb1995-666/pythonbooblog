@@ -1,0 +1,49 @@
+{% extends "app01/blog_index.html" %}
+{% block blog_index %}{% endblock %}
+{% block main %}
+<div class="main">
+    <div class="article">
+      <div class="map"><span> 当前位置：<a href='/'>首页</a> > 正文 </span> </div>
+      <div class="title">
+        <h1>{{title}}</h1>
+        <div class="subtitle"> <span><i class="fa fa-clock-o"></i>{{create_time}}</span><span><i class="fa fa-eye"></i> {{views}}</span><span> <a href="" rel="category tag">作者：{{creator}}</a> </span><span></span> </div>
+      </div>
+   		<p>{{body|safe}}</p>
+        <div style="    display: flex;
+    justify-content: center;"><a href="/like/{{blog_id}}/" style="color:#000"><i class="fa fa-thumbs-o-up" style="color:#fc5531"></i></a></div><div style="text-align: center;">{{like_num}}</div>
+    </div>
+
+
+    <div class="clear"></div>
+    <div class="con_pretext">
+      <ul>
+        <li class="first">上一篇：<a href=''>没有了</a>  </li>
+        <li class="last">下一篇：没有了 </li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+    {%if log_status%}
+    <form action="/blog_detail/{{blog_id}}/" method="post">
+      <label>发表评论</label>
+      <textarea rows="" cols="" name="comment"></textarea>
+      <button type="submit">提交</button>
+    </form>
+    {% else %}
+    <div>登录后可评论</div>
+    {%endif%}
+    {%for comment in comments%}
+    <div class="cont">
+                  <div class="img">
+                    <img src="/media/{{comment.comment_head_portrait}}/" alt="" class="img2">
+                  </div>
+                  <div class="text">
+                    <p class="tit">
+                        <span class="name">{{comment.commer}}</span>
+                        <span class="data">{{comment.create_time}}<a href="/like_comment/{{comment.id}}/{{blog_id}}/"><i class="fa fa-thumbs-o-up" style="color:#fc5531;padding-left: 20px;"></i></a>{{comment.like_comment}}</span>
+                    </p>
+                    <p class="ct">{{comment.comment_context}}</p>
+                  </div>
+    </div>
+    {%endfor%}
+  </div>
+{% endblock %}
