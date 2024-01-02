@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-qs)0q8#lsl6(b&%d!j_8pbr(-libcp79o)4zqoyp%s@&!cqf6&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "*",
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'app01',
     'corsheaders',
-    'captcha',
+    # 'captcha',
     'tinymce',
     'DjangoUeditor.DjangoUeditor',
 ]
@@ -89,10 +89,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',    # 数据库引擎
         'NAME': 'django',  # 数据库名称
-        'HOST': '81.69.18.204',  # 数据库地址，本机 ip 地址 127.0.0.1
+        'HOST': '127.0.0.1',  # 数据库地址，本机 ip 地址 127.0.0.1
         'PORT': 3306,  # 端口
         'USER': 'root',  # 数据库用户名
-        'PASSWORD': 'lb2021.11',  # 数据库密码
+        'PASSWORD': 'root1234',  # 数据库密码
         'OPTIONS': {
                         "init_command":"SET foreign_key_checks = 0;",
                     },  # 取消外键检查（临时）

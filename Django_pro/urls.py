@@ -23,7 +23,7 @@ urlpatterns = [
     path('', include('app01.urls')),
     path('ueditor/', include('DjangoUeditor.DjangoUeditor.urls')),
     url('tinymce/', include('tinymce.urls')),
-    path(r'captcha/', include('captcha.urls')),
+    # path(r'captcha/', include('captcha.urls')),
     url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}, name='static'),
     url(r'^media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
 ]
